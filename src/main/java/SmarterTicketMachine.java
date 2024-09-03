@@ -1,29 +1,31 @@
 package src.main.java;
- 
+import java.util.Scanner;
+
+
 /**
- * TicketMachine models a ticket machine that issues
- * flat-fare tickets.
- * The price of a ticket is specified via the constructor.
- * Instances will check to ensure that a user only enters
- * sensible amounts of money, and will only print a ticket
- * if enough money has been input.
- * 
- * @author David J. Barnes and Michael Kölling
- * @version 2016.02.29
+ * Write a description of class MyTicketMachine here.
+ *
+ * @author (your name)
+ * @version (a version number or a date)
  */
-public class SmarterTicketMachine
+public class MyTicketMachine
 {
+    Scanner myScanner=new Scanner (System.in);
+    int age = 0;
     // The price of a ticket from this machine.
     private int price;
     // The amount of money entered by a customer so far.
     private int balance;
     // The total amount of money collected by this machine.
     private int total;
-
+    public void getAge(int age){
+        System.out.println("Enter your age: ");
+        age = myScanner.nextInt();
+    }
     /**
      * Create a machine that issues tickets of the given price.
      */
-    public SmarterTicketMachine(int cost)
+    public MyTicketMachine(int cost)
     {
         price = cost;
         balance = 0;
@@ -69,7 +71,8 @@ public class SmarterTicketMachine
      */
     public void printTicket()
     {
-        if(balance >= price) {
+        boolean checkPrice = (balance >= price);
+        if(checkPrice) {
             // Simulate the printing of a ticket.
             System.out.println("##################");
             System.out.println("# The BlueJ Line");
@@ -88,8 +91,14 @@ public class SmarterTicketMachine
                                (price - balance) + " more cents.");
                     
         }
+        if (age>65) {
     }
-
+    public int emptyMachine(){
+        int prevTotal = total;
+        
+        total = 0;
+        return prevTotal;
+    }
     /**
      * Return the money in the balance.
      * The balance is cleared.
