@@ -19,8 +19,11 @@ public class MyTicketMachine
     // The total amount of money collected by this machine.
     private int total;
     public void getAge(int age){
-        System.out.println("Enter your age: ");
-        age = myScanner.nextInt();
+        if (age >= 65 || age <= 10) {
+            price = (price/2);
+            
+        }
+        
     }
     /**
      * Create a machine that issues tickets of the given price.
@@ -37,7 +40,9 @@ public class MyTicketMachine
      */
     public int getPrice()
     {
+        
         return price;
+
     }
 
     /**
@@ -91,11 +96,10 @@ public class MyTicketMachine
                                (price - balance) + " more cents.");
                     
         }
-        if (age>65) {
+        
     }
     public int emptyMachine(){
         int prevTotal = total;
-        
         total = 0;
         return prevTotal;
     }
